@@ -16,15 +16,15 @@ m2_in3 = 29
 m2_in4 = 31
  
 
-m1 = stepMotor(m1_in1,m1_in2,m1_in3,m1_in4,counterclockwise=False)
+m1 = stepMotor(m1_in1,m1_in2,m1_in3,m1_in4)
 m2 = stepMotor(m2_in1,m2_in2,m2_in3,m2_in4)
 
 # the meat
 try:
     i = 0
-    for i in range(0,20):
-        m1.step(20)
-        m2.step(20)
+    for i in range(0,4):
+        m1.step(100, True)
+        m2.step(100, False)
 
 except KeyboardInterrupt:
     pass
