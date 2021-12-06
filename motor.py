@@ -1,6 +1,8 @@
 import time
 import RPi.GPIO as GPIO
 
+#test
+
 steps_per_rotation = 200
 step_sequence = [[1,0,0,1],
                     [1,0,0,1],
