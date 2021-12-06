@@ -45,6 +45,7 @@ class stepMotor:
         return self._location
         
     def get_pins(self):
+        return self._motorPins
         pass
 
     def cleanup(self):
