@@ -24,7 +24,8 @@ class stepMotor:
         for i in range(0,len(self._motorPins)):
             GPIO.setup( self._motorPins[i], GPIO.OUT )
             GPIO.output( self._motorPins[i], GPIO.LOW )
-            
+    
+    # steps motor a desired number of steps
     def step(self, steps = 20):
         if steps >= 0:    
             motor_step_counter = 0
@@ -32,21 +33,19 @@ class stepMotor:
             for i in range(steps):
                 for pin in range(0,len(self._motorPins)):
                     GPIO.output( self._motorPins[pin], step_sequence[motor_step_counter][pin] )
+                # forward
                 if self._direction == True:
                     motor_step_counter = (motor_step_counter + 1) % 8
+                # backward
                 else:
                     motor_step_counter = (motor_step_counter - 1) % 8
                 time.sleep( self._stepSleep )
 
+    # allow direction to be changed external
     def set_direction(self, counterclockwise=True):
         self._direction=counterclockwise
-
-    def get_location(self):
-        return self._location
-        
-    def get_pins(self):
-        return self._motorPins
-
+  
+    # makes sure all pins are low when completed
     def cleanup(self):
         for pin in range(0,len(self._motorPins)):
             GPIO.output( self._motorPins[pin], GPIO.LOW )
